@@ -1,5 +1,5 @@
 Map_config:
-  map_name: "small_island"
+  map_name: "Utah"
   map_size: 16
   map_res: 0.25
   map_res_hitl: 0.25
@@ -18,8 +18,10 @@ burn_time: 0.02 ## this is the "dt" of the simulation. Increase to 0.1 if using 
 run_lockstep: True
 
 vehicle:
-  make: "savage_low_f"
-  model: "flux"
+  # make: "savage_low_f"
+  # model: "flux"
+  make: "sunburst"
+  model: "offroad"
 
 ## use this to tune the low-level wheelspeed control
 speed_max: 20

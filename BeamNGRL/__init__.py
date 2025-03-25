@@ -3,7 +3,7 @@ import BeamNGRL.dynamics as dynamics
 import BeamNGRL.control as control
 
 
-ROOT_PATH = Path(__file__).parent
+ROOT_PATH = Path(__file__).parent.parent
 DATA_PATH = Path(__file__).parents[1] / 'data'
 DATASETS_PATH = Path(__file__).parents[1] / 'data' / 'datasets'
 DYN_DATA_CONFIG = Path(dynamics.__file__).parent / 'config' / 'datasets'

@@ -5,7 +5,7 @@ from BeamNGRL.BeamNG.beamng_interface_new import *
 from BeamNGRL.utils.planning import update_goal
 from gym import spaces
 
-class OffroadSmallIsland(gym.Env):
+class OffroadUtah(gym.Env):
     def __init__(self, hal_config_path = None, config_path=None, args=None):
         if config_path is None:
             print("no config file provided!")

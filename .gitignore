@@ -3,3 +3,8 @@ data/
 logs/
 Experiments/Results/
 *.swp
+
+.vscode
+
+BeamNG.gym/
+my_notes.md

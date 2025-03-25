@@ -1,5 +1,5 @@
 import numpy as np
-from BeamNGRL.BeamNG.beamng_interface import get_beamng_default
+from BeamNGRL.BeamNG.beamng_interface_new import get_beamng_default
 import traceback
 import torch
 from BeamNGRL.control.UW_mppi.MPPI import MPPI
@@ -49,7 +49,8 @@ def collect_mppi_data(args):
         Map_config = yaml.safe_load(f)
 
     # target_WP = np.load(ROOT_PATH.parent / 'examples' / "WP_file_offroad.npy")
-    waypoints = np.load(ROOT_PATH / 'utils' / 'waypoint_files' / "WP_file_offroad.npy")
+    # waypoints = np.load(ROOT_PATH / 'utils' / 'waypoint_files' / "WP_file_offroad.npy")
+    waypoints = np.load(ROOT_PATH / 'Experiments' / 'Waypoints' / "WP_file_offroad.npy")
     target_WP = waypoints.copy()
     num_points = len(target_WP)
     target_WP = target_WP[::-1,...]

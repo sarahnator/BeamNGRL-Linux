@@ -1,5 +1,5 @@
 import numpy as np
-from BeamNGRL.BeamNG.beamng_interface import get_beamng_default
+from BeamNGRL.BeamNG.beamng_interface_new import get_beamng_default
 import traceback
 import torch
 from BeamNGRL.control.UW_mppi.MPPI import MPPI
@@ -46,7 +46,8 @@ def collect_mppi_data(args):
     with open(MPPI_CONFIG_PTH / 'Map_config.yaml') as f:
         Map_config = yaml.safe_load(f)
 
-    target_WP = np.load(ROOT_PATH / 'utils' / 'waypoint_files' / "WP_file_offroad.npy")
+    # target_WP = np.load(ROOT_PATH / 'utils' / 'waypoint_files' / "WP_file_offroad.npy")
+    target_WP = np.load(ROOT_PATH / 'Experiments' / 'Waypoints' / "WP_file_offroad.npy")
 
     map_res = Map_config["map_res"]
     dtype = torch.float
@@ -82,10 +83,10 @@ def collect_mppi_data(args):
             car_model='offroad',
             start_pos=np.array(args.start_pos),
             start_quat=np.array(args.start_quat),
-            map_name=args.map_name,
+            map_config=Map_config,
             car_make='sunburst',
-            map_res=Map_config["map_res"],
-            map_size=Map_config["map_size"]
+            # map_res=Map_config["map_res"],
+            # map_size=Map_config["map_size"]
         )
 
         current_wp_index = 0  # initialize waypoint index with 0
@@ -157,11 +158,8 @@ def collect_mppi_data(args):
                     .numpy(),
                     dtype=np.float64,
                 )[0]
-<<<<<<< HEAD
-                action[1] = np.clip(action[1], Sampling_config["min_thr"], Sampling_config["max_thr"])
-=======
                 # action[1] = np.clip(action[1], 0, 0.5)
->>>>>>> origin
+                #action[1] = np.clip(action[1], Sampling_config["min_thr"], Sampling_config["max_thr"])
 
                 costmap_vis(
                     controller.Dynamics.states.cpu().numpy(),
@@ -222,7 +220,7 @@ if __name__ == "__main__":
     parser.add_argument('--output_dir', type=str, default=None, help='location to store test results')
     parser.add_argument('--start_pos', type=float, default=[-67, 336, 0.5], nargs=3, help='Starting position of the vehicle for tripped_flat on grimap_v2')
     parser.add_argument('--start_quat', type=float, default=[0, 0, 0.3826834, 0.9238795], nargs=4, help='Starting rotation (quat) of the vehicle.')
-    parser.add_argument('--map_name', type=str, default='smallgrid', help='Map name.')
+    parser.add_argument('--map_name', type=str, default='Utah', help='Map name.')
     parser.add_argument('--waypoint_file', type=str, default='WP_file_offroad.npy', help='Map name.')
     parser.add_argument('--duration', type=int, default=30)
     parser.add_argument('--save_every_n_sec', type=int, default=15)
